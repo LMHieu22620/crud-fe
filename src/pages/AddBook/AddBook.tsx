@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { omit } from 'lodash'
 import { useEffect, useState } from 'react'
-import { useMatch, useParams } from 'react-router-dom'
+import { Link, useMatch, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Book } from 'src/types/book.type'
 import { addBook, getBook, updateBook } from '~/apis/books.api'
@@ -227,12 +227,22 @@ export default function AddBook() {
             <DateSelect value={datePublication} onChange={(value) => setDatePublication(value)} />
           </div>
         </div>
-        <button
-          type='submit'
-          className='w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto'
-        >
-          {isAddMode ? 'Add' : 'Update'}
-        </button>
+        <div className='flex  items-center'>
+          <button
+            type='submit'
+            className='w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto'
+          >
+            {isAddMode ? 'Add' : 'Update'}
+          </button>
+          <div className=''>
+            <Link
+              to='/books'
+              className=' ml-4 rounded-lg bg-pink-500 px-5 py-3 text-sm font-medium text-white hover:bg-pink-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600'
+            >
+              Quay lại
+            </Link>
+          </div>
+        </div>
       </form>
     </div>
   )
